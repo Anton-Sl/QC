@@ -121,7 +121,7 @@ class QcClient(object):
         logoutUrl = "https://almalmqc1250saastrial.saas.hpe.com/qcbin/authentication-point/logout"
         req = self.session.get(logoutUrl)
         if req.status_code == requests.codes.ok:
-            self.session.cookies.clear()
+            del self.session.cookies['LWSSO_COOKIE_KEY']
             return True
         else:
             return False
